@@ -1,20 +1,22 @@
 let fields = [
     null,
-    'cross',
-    'circle',
+    null,
+    null,
     null,
     null,
     null,
     null,
     null,
     null
-];
-
-function init(){
+  ];
+  
+  let currentPlayer = 'circle'; // Startspieler
+  
+  function init() {
     render();
-}
-
-function render() {
+  }
+  
+  function render() {
     const contentDiv = document.getElementById('content');
     let tableHTML = '<table>';
     for (let i = 0; i < 3; i++) {
@@ -22,7 +24,7 @@ function render() {
       for (let j = 0; j < 3; j++) {
         const index = i * 3 + j;
         // Setze den HTML-Code für jede Zelle basierend auf dem Wert im Feld
-        tableHTML += `<td>${getFieldDisplayValue(fields[index])}</td>`;
+        tableHTML += `<td onclick="handleCellClick(${index})">${getFieldDisplayValue(fields[index])}</td>`;
       }
       tableHTML += '</tr>';
     }
@@ -40,9 +42,25 @@ function render() {
       return ''; // Leerer String für null oder andere ungültige Werte
     }
   }
-    
+  
+  function handleCellClick(index) {
+    fields[index] = currentPlayer;
+    const cell = document.getElementsByTagName('td')[index];
+    cell.innerHTML = getFieldDisplayValue(currentPlayer);
+    cell.onclick = null; // Entferne die onclick-Funktion, um weitere Klicks zu verhindern
+  
+    currentPlayer = togglePlayer(currentPlayer); // Wechsle zum anderen Spieler
+  
+    // Optional: Hier kannst du weitere Logik für das Spiel hinzufügen, z.B. Überprüfung auf Gewinner, Unentschieden usw.
+  }
+  
+  function togglePlayer(player) {
+    return player === 'circle' ? 'cross' : 'circle';
+  }
+  
   // Rufe die render-Funktion auf, um die Tabelle zu aktualisieren
   render();
+  
 
   function generateAnimatedCircleSVG() {
     const svgCode = `
@@ -69,7 +87,4 @@ function render() {
   `;
 
   return svgCode;
-}
-  
-
-  
+} 
