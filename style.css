@@ -2,10 +2,17 @@ body {
     background-color: #323232;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
   }
 
   h1{
     text-align: center;
+    margin-top: 100px;
   }
   
   table {
@@ -49,7 +56,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
   }
   
   /* Größer und fetter Text für X und O */
@@ -58,5 +64,20 @@ body {
     font-weight: bold;
   }
   
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4783a8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 100px;
+}
+
+button:hover {
+    background-color: #4697c9;
+}
   
 

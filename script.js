@@ -133,3 +133,19 @@ function drawWinningLine(combination) {
     line.style.transform = `rotate(${lineAngle}rad)`;
     document.body.appendChild(line);
 }
+
+function restartGame(){
+    fields = [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ];
+
+    render();
+}
