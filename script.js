@@ -111,8 +111,10 @@ function drawWinningLine(combination) {
     const lineColor = '#ffffff';
     const lineWidth = 5;
 
-    const startCell = document.querySelectorAll(`td`)[combination[0]];
-    const endCell = document.querySelectorAll(`td`)[combination[2]];
+    const cells = document.querySelectorAll('td');
+
+    const startCell = cells[combination[0]];
+    const endCell = cells[combination[2]];
     const startRect = startCell.getBoundingClientRect();
     const endRect = endCell.getBoundingClientRect();
 
@@ -126,8 +128,8 @@ function drawWinningLine(combination) {
     line.style.width = `${lineLength}px`;
     line.style.height = `${lineWidth}px`;
     line.style.backgroundColor = lineColor;
-    line.style.top = `${ startRect.top + startRect.height / 2 - lineWidth / 2 } px`;
-    line.style.left = `${ startRect.left + startRect.width / 2 } px`;
-    line.style.transform = `rotate(${ lineAngle }rad)`;
-    document.getElementById('content').appendChild(line);
+    line.style.top = `${startRect.top + startRect.height / 2 - lineWidth / 2}px`;
+    line.style.left = `${startRect.left + startRect.width / 2}px`;
+    line.style.transform = `rotate(${lineAngle}rad)`;
+    document.body.appendChild(line);
 }
